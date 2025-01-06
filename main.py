@@ -21,5 +21,12 @@ if st.button('Scrape Site'):
 
     with st.expander('View Dom Content'):  
         st.text_area("DOM Content",cleaned_content, height=500)
-          
 
+if "dom_content" in st.session_state:
+    parse_description= st.text_area("What you want to parse")
+
+    if st.button('Parse Content'):
+        if parse_description:
+            st.write("Parsing Content...")
+
+            dom_chunks= split_dom_content(st.session_state.dom_content)
